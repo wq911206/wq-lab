@@ -52,8 +52,10 @@ class Trending(webapp2.RequestHandler):
 
         self.response.write('<table style = "width:70%">')
         for count in counts:
-            stream=Stream.query(Stream.author==users.get_current_user(), Stream.name==count.name).fetch()[0]
-            self.response.out.write('<td><div style = "position:relative;"><a href="%s"><img src="%s" ></img><div style = "position: absolute; left:0px; top:0px">%s</div></a></div><div>%s views in the past hour</div></td>' % (stream.url,stream.coverurl,stream.name,count.numbers))
+            stream=Stream.query(Stream.author==users.get_current_user(), Stream.name==count.name).fetch()
+            if(len(stream)>0):
+                stream=stream[0]
+                self.response.out.write('<td><div style = "position:relative;"><a href="%s"><img src="%s" ></img><div style = "position: absolute; left:0px; top:0px">%s</div></a></div><div>%s views in the past hour</div></td>' % (stream.url,stream.coverurl,stream.name,count.numbers))
          
         self.response.write('</table>')
         
