@@ -1,0 +1,108 @@
+application: wq911206
+version: 126
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+#- url: /coverimage.*
+ # static_files: mqq.jpg
+  #upload: coverimage
+
+- url: /createstream
+  script: createstream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /sign
+  script: createstream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /viewallstream
+  script: view.application
+  login: required
+  auth_fail_action: unauthorized
+  
+- url: /search
+  script: search.application
+  login: required
+  auth_fail_action: unauthorized
+  
+- url: /showsearch
+  script: search.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /error
+  script: error.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /trending
+  script: trending.application
+  login: required
+  auth_fail_action: unauthorized
+  
+- url: /update
+  script: trending.application
+  login: required
+  auth_fail_action: unauthorized
+  
+- url: /task
+  script: trending.application
+  login: required
+  auth_fail_action: unauthorized
+  
+- url: /clean
+  script: trending.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /management
+  script: management.application
+
+  
+- url: /delstream
+  script: management.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /stream.*
+  script: viewsinglestream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /upload
+  script: viewsinglestream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /showmore.*
+  script: viewsinglestream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /delpic
+  script: viewsinglestream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /subscribe
+  script: viewsinglestream.application
+
+- url: /img.*
+  script: viewsinglestream.application
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /.*
+  script: login.application
+  
+
+
+libraries:
+- name: webapp2
+  version: latest
+- name: PIL
+  version: latest
