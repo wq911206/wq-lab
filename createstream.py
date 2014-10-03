@@ -79,6 +79,7 @@ class  CreateStream(webapp2.RequestHandler):
             stream.name=stream_name
             count.name=stream_name
             count.numbers=0
+            count.totalviews=0
             count.put()
             stream.numberofpictures=0
             #stream.views=0

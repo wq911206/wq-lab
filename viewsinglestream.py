@@ -155,6 +155,7 @@ class ShowPictures(webapp2.RequestHandler):
         count=CountViews.query(CountViews.name==stream.name,ancestor=ndb.Key('User',stream.author_name)).fetch()[0]
         #count==CountViews.query().fetch()[0]
         count.numbers=count.numbers+1
+        count.totalviews=count.totalviews+1
         count.put()
         #self.response.write(count.numbers)
         #stream=Stream.query(Stream.name==stream_name).fetch()[0]

@@ -37,3 +37,4 @@ class Global(ndb.Model):
 class CountViews(ndb.Model):
     name=ndb.StringProperty()
     numbers=ndb.IntegerProperty()
+    totalviews=ndb.IntegerProperty()

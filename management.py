@@ -39,7 +39,7 @@ class  ManagementPage(webapp2.RequestHandler):
         dellsts=self.request.get_all("status")                
         if(len(dellsts)>0):
             streams=Stream.query(Stream.name.IN(dellsts), Stream.author==users.get_current_user()).fetch()
-            counts=CountViews.query(CountViews.name.IN(dellsts), CountViews.name==users.get_current_user().nickname()).fetch()
+            counts=CountViews.query(CountViews.name.IN(dellsts), ancestor=ndb.Key('User', users.get_current_user().nickname())).fetch()
             for stream in streams:
                 pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('Stream',stream.name))
                 db.delete(pictures)                  
@@ -77,7 +77,7 @@ class  ManagementPage(webapp2.RequestHandler):
             for stream in streams:
                 if(users.get_current_user().nickname() in stream.subscribers):
                     count=CountViews.query(CountViews.name==stream.name,ancestor=ndb.Key('User',stream.author_name)).fetch()[0]
-                    self.response.write('<tr><td><a href="%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td><input type="checkbox" name="status1", value="%s"></td></tr>' % (stream.guesturl,stream.name,stream.lastnewdate,stream.numberofpictures,count.numbers,stream.name))
+                    self.response.write('<tr><td><a href="%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td><td><input type="checkbox" name="status1", value="%s"></td></tr>' % (stream.guesturl,stream.name,stream.lastnewdate,stream.numberofpictures,count.totalviews,stream.name))
 		
 	self.response.write('</table>')	
 	self.response.write('<input type="submit" value="Delete"></form>')
