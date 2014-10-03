@@ -4,4 +4,4 @@ cron:
 
 - description: cleanviews
   url: /clean
-  schedule: every 1 minutes
+  schedule: every 1 hours
