@@ -39,10 +39,12 @@ class  ManagementPage(webapp2.RequestHandler):
         dellsts=self.request.get_all("status")                
         if(len(dellsts)>0):
             streams=Stream.query(Stream.name.IN(dellsts), Stream.author==users.get_current_user()).fetch()
+            counts=CountViews.query(CountViews.name.IN(dellsts), CountViews.name==users.get_current_user().nickname()).fetch()
             for stream in streams:
                 pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('Stream',stream.name))
                 db.delete(pictures)                  
             ndb.delete_multi(ndb.put_multi(streams))
+            ndb.delete_multi(ndb.put_multi(counts))
         
         dellsts=self.request.get_all("status1") 
         #self.response.write(len(dellsts))               

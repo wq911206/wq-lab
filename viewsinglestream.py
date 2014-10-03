@@ -44,6 +44,7 @@ VIEW_SINGLE_STREAM_TEMPLATE ="""\
 class  ViewSinglePage(webapp2.RequestHandler): 
     def get(self):                                           
         self.response.write(VIEW_SINGLE_STREAM_TEMPLATE)
+        #self.response.write(self.request.headers)
                 
         stream_name=re.findall('%3D(.*)',self.request.url)[0]
 

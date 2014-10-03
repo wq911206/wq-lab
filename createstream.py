@@ -87,7 +87,7 @@ class  CreateStream(webapp2.RequestHandler):
             stream.author_name=users.get_current_user().nickname()
             stream.url=urllib.urlencode({'streamname': stream.name})
             stream.guesturl=urllib.urlencode({'showmore': stream.name+"=="+users.get_current_user().nickname()})
-            default_context = "Notice: " + users.get_current_user().nickname() + " add a new stream named '" + stream_name +"' and the link to the stream is"+stream.guesturl+"\n\n"
+            default_context = "Notice: " + users.get_current_user().nickname() + " add a new stream named '" + stream_name +"' and the link to the stream is: "+"http://wq911206.appspot.com/"+stream.guesturl+"\n\n"
     
             if len(stream_tags)>0:
                 stream.tag=stream_tags

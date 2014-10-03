@@ -9,6 +9,14 @@ handlers:
  # static_files: mqq.jpg
   #upload: coverimage
 
+- url: /task
+  script: trending.application
+  login: admin
+  
+- url: /clean
+  script: trending.application
+  login: admin
+
 - url: /createstream
   script: createstream.application
   login: required
@@ -38,14 +46,6 @@ handlers:
   login: required
   
 - url: /update
-  script: trending.application
-  login: required
-  
-- url: /task
-  script: trending.application
-  #login: required
-  
-- url: /clean
   script: trending.application
   #login: required
 
