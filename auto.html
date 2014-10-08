@@ -1,0 +1,26 @@
+<!doctype html>
+<head>
+  <script src="jquery-1.10.2.js"></script>
+  <script src="jquery-ui.js"></script> 
+  <script>
+  $(function() {
+    var availableTags = [
+      "Andy",
+      "Andrew",
+      "Bob",
+      "Bobby",
+      "Chuck",
+      "Charles",
+      "David"
+    ];
+    $( "#wq" ).autocomplete({
+      source: availableTags
+    });
+  });
+  </script>
+</head>
+<body>
+ 
+<form>Content: <input type="text" id="wq"></form>
+</body>
+</html>
