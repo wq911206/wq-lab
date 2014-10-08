@@ -1,0 +1,18 @@
+#!/usr/bin/python
+import sys
+import os
+import re
+from subprocess import Popen, PIPE
+def git_hook():
+    cmd = "git ls-tree --name-only --full-tree -r -l HEAD"
+    files = Popen(cmd, shell=True, stdout=PIPE, cwd=os.getcwd())
+    for file in  files.stdout.readlines():
+        with open(os.getcwd()+'/' + file.split("\n")[0]) as tmp:
+          for line in tmp:
+            chars=len(line)
+            if chars>80:
+              return ("Your Commits contains at least one file has a line with more than 80 characters"  )
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(git_hook())
