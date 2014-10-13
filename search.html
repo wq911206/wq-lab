@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+  <h1>Connex.us</h1>
+	<table style="width:50%">
+		<tr>
+			<td><a href="management">Manage</td>
+			<td><a href="createstream">Create</a></td>	
+			<td><a href="viewallstream">View</a></td>
+    		<td>Search</a></td>
+    		<td><a href="trending">Trending</a></td>
+    		<td><a href="social">Social</a></td>
+   		</tr>
+  	</table>
+
+  	<form action="/showsearch" method="get">
+        <input type="search" name="searchStream" placeholder="Lucknow"></br>
+        <input type="submit" value="Search">
+    </form>
+    
+    <p>{{showNum}} results for <b>{{stream_name}}</b>,<br>  click on image to view stream</p>
+    {%for info in infos%}
+        <td><div style = "position:relative;"><a href = "{{info[0]}}"><img src="{{info[1]}}" ></img><div style = "position: absolute; left:150px; top:20px"></a>{{info[2]}}</div></div></td>
+    {%endfor%}
+</body>
+</html>
+{% endautoescape %}

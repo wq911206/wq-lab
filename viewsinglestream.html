@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+    <body>
+        <h1>Connex.us</h1>
+    
+        <table style="width:50%">
+            <tr>
+                <td><a href="management">Manage</a></td>
+                <td><a href="createstream">Create</a></td>	
+                <td><a href="viewallstream">View</a></td>
+                <td><a href="search">Search</a></td>
+                <td><a href="trending">Trending</a></td>
+                <td><a href="social">Social</a></td>
+            </tr>
+        </table>
+        
+        <h2 >{{stream_name}}</h2>
+        
+        <table border="1" style="width:100%">
+            <tr>
+            {%for picture in pictures%}
+                <td><img src="img?img_id={{picture.key()}}"></img></td>
+            {%endfor%}
+            </tr>
+        </table>
+        
+        <form action="{{url}}" ,method="post"><input type="submit" value="More Pictures"></form>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            Upload File: <input type="file"  name="file" multiple><br> <input type="submit" name="submit" value="Submit"> 
+        </form>
+        
+        
+    
+    </body>
+</html>
+{% endautoescape %}

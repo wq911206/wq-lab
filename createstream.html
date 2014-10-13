@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+  <h1>Connex.us</h1>
+  <table style="width:70%">
+    <tr>
+      <td><a href="management">Manage</a></td>
+      <td><b>Create</b></td>  
+      <td><a href="viewallstream">View</a></td>
+        <td><a href="search">Search</a></td>
+        <td><a href="trending">Trending</a></td>
+        <td><a href="social">Social</a></td>
+    </tr>
+  </table>
+    
+  <form action="/sign" method="post">
+  <table>
+    <tr>
+      <td><textarea name="streamname" rows="3" cols="60"></textarea></td>
+      <td><textarea name="streamtags" rows="3" cols="60"></textarea></td>
+    </tr>
+    <tr>
+      <td><h2>Name Your Stream</h2></td>
+      <td><h2>Tag Your Stream</h2></td>
+    </tr>
+    <tr>
+      <td><textarea name="subscribers" rows="3" cols="60" placeholder = "Input subscribers' emails"></textarea></td>
+      <td><textarea name="url" rows="3" cols="60"></textarea></td>
+    </tr>
+    <tr>
+      <td><textarea name="context" rows="3" cols="60" placeholder="Option message for invite" ></textarea></td>
+      <td><h2>URL to to Cover Image</h2></td>
+    </tr>
+    <tr>
+      <td><h2>Add Subscribers</h2></td>
+    </tr>
+  </table>
+  <input type="submit" value="Create Stream"></div>
+  </form>
+	
+</body>
+</html>
+{% endautoescape %}

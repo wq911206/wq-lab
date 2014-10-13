@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+	<h1>Connex.us</h1>
+	<table style="width:50%">
+		<tr>
+			<td>Manage</td>
+			<td><a href="createstream">Create</a></td>	
+			<td><a href="viewallstream">View</a></td>
+    		<td><a href="search">Search</a></td>
+    		<td><a href="trending">Trending</a></td>
+    		<td><a href="social">Social</a></td>
+  		</tr>
+  	</table>
+  	<h2>Streams I own</h2>
+  	<form action="/management" ,method="post">
+        <table border="1" style="width:100%">
+            
+            <tr><td>Name</td><td>Last New Picture</td><td>Number of Pictures</td><td>Delete</td></tr>
+            {%for stream in streams%}
+            <tr><td><a href="{{stream.url}}">{{stream.name}}</a></td><td>{{stream.lastnewdate}}</td><td>{{stream.numberofpictures}}</td><td><input type="checkbox" name="status", value="{{stream.name}}"></td></tr></form>
+            {%endfor%}
+        </table>
+        <input type="submit" value="Delete">
+  	</form>
+  	
+  	<h2>Streams I Subscribe to</h2>
+  	<form action="/management" ,method="post">
+        <table border="1" style="width:100%">
+            <tr><td>Name</td><td>Last New Picture</td><td>Number of Pictures</td><td>Views</td><td>Delete</td></tr>
+            {%for info in infos%}
+            <tr><td><a href="{{info[0]}}">{{info[1]}}</a></td><td>{{info[2]}}</td><td>{{info[3]}}</td><td>{{info[4]}}</td><td><input type="checkbox" name="status1", value="{{info[5]}}"></td></tr>
+            {%endfor%}
+        </table>
+        <input type="submit" value="Delete">
+        <br>
+        <a href={{logout_url}}>Logout</a>
+  	</form>
+</body>
+</html>
+{% endautoescape %}

@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+  <h1>Connex.us</h1>
+	
+	<table style="width:50%">
+		<tr>
+			<td><a href="management">Manage</a></td>
+			<td><a href="createstream">Create</a></td>	
+			<td><a href="viewallstream">View</a></td>
+    		<td><a href="search">Search</a></td>
+    		<td>Trending</td>
+    		<td><a href="social">Social</a></td>
+  		</tr>
+  	</table>
+  	<h2>Top 3 Trending Streams</h2>
+  	<table style = "width:70%">
+  	{%for info in infos%}
+  	    <td><div style = "position:relative;"><a href="{{info[0]}}"><img src="{{info[1]}}" ></img><div style = "position: absolute; left:0px; top:0px">{{info[2]}}</div></a></div><div>{{info[3]}} view(s) in the past hour</div></td>
+  	{%endfor%}
+  	</table>
+  	<form action="/update" method="post">
+  	    <input type="radio" name="frequency" value="no">No reports<br>
+  	    <input type="radio" name="frequency" value="5m">Every 5 minutes<br>
+  	    <input type="radio" name="frequency" value="1h">Every 1 hour<br>
+  	    <input type="radio" name="frequency" value="1d">Every day<br>
+  	    <input type="submit" value="Update rate">
+  	</form>
+  	<p>Current Update Frequency: {{str}}</p>
+</body>
+</html>
+{% endautoescape %}
