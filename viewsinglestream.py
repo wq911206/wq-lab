@@ -73,7 +73,7 @@ class Upload(webapp2.RequestHandler):
             stream.numberofpictures=stream.numberofpictures+1
             stream.total=stream.total+1         
             picture.id=str(stream.total)
-            #img=images.resize(img,300,300)        
+            img=images.resize(img,300,300)        
             picture.image=db.Blob(img)
             picture.put()
             stream.put()
