@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<body>
+  <h1>Connex.us</h1>
+	<table style="width:50%">
+		<tr>
+			<td><a href="management">Manage</td>
+			<td><a href="createstream">Create</a></td>	
+			<td>View</a></td>
+    		<td><a href="search">Search</a></td>
+    		<td><a href="trending">Trending</a></td>
+    		<td><a href="social">Social</a></td>
+  		</tr>
+  	</table>
+  	<h2>View All Streams</h2>
+  	<table style = "width:100%">
+  	{%for info in infos%}
+  	    {%if info[3]==0%}
+  	        <tr>
+  	    {%endif%}
+  	    <td><a href="{{info[0]}}"><div style = "position:relative;"><img src="{{info[1]}}" ></img><div style = "position: absolute; left:0px; top:0px">{{info[2]}}</div></div></a></td>
+  	    {%if info[3]==0%}
+  	        </tr>
+  	    {%endif%}
+  	{%endfor%}
+  	</table>	
+</body>
+</html>
+{% endautoescape %}

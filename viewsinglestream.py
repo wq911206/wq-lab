@@ -73,7 +73,7 @@ class Upload(webapp2.RequestHandler):
             stream.numberofpictures=stream.numberofpictures+1
             stream.total=stream.total+1         
             picture.id=str(stream.total)
-            img=images.resize(img,300,300)        
+            #img=images.resize(img,300,300)        
             picture.image=db.Blob(img)
             picture.put()
             stream.put()
@@ -125,7 +125,6 @@ class ShowPictures(webapp2.RequestHandler):
     def get(self): 
         stream_name=re.findall('%3D(.*)%3D%3D',self.request.url)[0]
         user_name=re.findall('%3D%3D(.*)',self.request.url)[0]
-        self.response.write('<h2 >%s</h2>' %stream_name)
         index=0
         stream=Stream.query(Stream.name==stream_name, Stream.author_name==user_name).fetch()[0]
         count=CountViews.query(CountViews.name==stream.name,ancestor=ndb.Key('User',stream.author_name)).fetch()[0]
@@ -134,35 +133,31 @@ class ShowPictures(webapp2.RequestHandler):
         count.put()
         pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1 "+"ORDER BY uploaddate DESC",db.Key.from_path('Stream',stream_name))
         
+        infos=[]
+        url=""
+        status=(0,0)
         if(users.get_current_user() and stream.author==users.get_current_user()):
-            self.response.write('<form action="delpic" method="post"><table border="1" style="width:100%">')
+            status=(1,1)
             for picture in pictures:
-                if(index==0):
-                    self.response.write("<tr>")
-                self.response.out.write('<td><img src="img?img_id=%s"></img><input type="checkbox" name="status", value="%s"></td>' %(picture.key(),picture.id))
-                if(index==3):
-                    self.response.write("</tr>")
+                infos.append((picture.key(),picture.id,index))
                 index=index+1
-            self.response.write('</table>')	
-            self.response.write('<input type="submit" value="Delete Selected"></form>')
-            url=urllib.urlencode({'streamname': stream.name}) 
-            self.response.write('<a href="%s">Go Back</a>'% url) 
+                if(index==4):
+                    index=0 
+            url=urllib.urlencode({'streamname': stream.name})
         
         else:
-            self.response.write('<table border="1" style="width:100%">')
             for picture in pictures:
-                if(index==0):
-                    self.response.write("<tr>")
-                self.response.out.write('<td><img src="img?img_id=%s"></img></td>' %picture.key())
-                if(index==3):
-                    self.response.write("</tr>")
+                infos.append((picture.key(),0,index))
                 index=index+1
-            self.response.write('</table>')            	
+                if(index==4):
+                    index=0           	
             if(users.get_current_user()):
-                self.response.write('<form action="subscribe" method="post"><input type="submit" value="Subscribe"></form>') 
+                status=(1,0)
             else:
                 self.redirect(users.create_login_url(self.request.url))
-            self.response.write('<a href="/management">Go Back</a>')
+        template_values={"stream_name": stream_name,"infos":infos,"url":url,"status":status}
+        template=JINJA_ENVIRONMENT.get_template("showmore.html")
+        self.response.write(template.render(template_values))
             
         
         
