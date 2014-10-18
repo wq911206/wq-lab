@@ -34,7 +34,9 @@ class  ManagementPage(webapp2.RequestHandler):
             streams=Stream.query(Stream.name.IN(dellsts), Stream.author==users.get_current_user()).fetch()
             counts=CountViews.query(CountViews.name.IN(dellsts), ancestor=ndb.Key('User', users.get_current_user().nickname())).fetch()
             for stream in streams:
-                pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('Stream',stream.name))
+                pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('User',users.get_current_user().nickname(),'Stream',stream.name))
+                for picture in pictures:
+                    blobstore.delete(picture.imgkey)
                 db.delete(pictures)                  
             ndb.delete_multi(ndb.put_multi(streams))
             ndb.delete_multi(ndb.put_multi(counts))
@@ -53,13 +55,25 @@ class  ManagementPage(webapp2.RequestHandler):
             for stream in streams:
                 if(users.get_current_user().nickname() in stream.subscribers):
                     count=CountViews.query(CountViews.name==stream.name,ancestor=ndb.Key('User',stream.author_name)).fetch()[0]
-                    tmp=(stream.guesturl,stream.name,stream.lastnewdate,stream.numberofpictures,count.totalviews,stream.name)
+                    pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('User',users.get_current_user().nickname(),'Stream',stream.name))
+                    numberofpictures=0
+                    for picture in pictures:
+                        numberofpictures=numberofpictures+1
+                    tmp=(stream.guesturl,stream.name,stream.lastnewdate,numberofpictures,count.totalviews,stream.name)
                     infos.append(tmp)
         
         streams=Stream.query(Stream.author==users.get_current_user()).order(-Stream.creattime).fetch()
+        infos1=[]
+        for stream in streams:
+            numberofpictures=0
+            pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('User',users.get_current_user().nickname(),'Stream',stream.name))
+            for picture in pictures:
+                numberofpictures=numberofpictures+1
+            tmp=(stream.url,stream.name,stream.lastnewdate,numberofpictures,stream.name)
+            infos1.append(tmp)
         logout_url=users.create_logout_url(self.request.url)
         template_values={
-            "streams": streams,
+            "infos1": infos1,
             "infos": infos,
             "logout_url": logout_url,
         }
@@ -77,7 +91,7 @@ class DeleteStreams(webapp2.RequestHandler):
         if(len(dellsts)>0):
             streams=Stream.query(Stream.name.IN(dellsts), Stream.author==users.get_current_user()).fetch()
             for stream in streams:
-                pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('Stream',stream.name))
+                pictures=db.GqlQuery("SELECT * FROM Picture " +"WHERE ANCESTOR IS :1",db.Key.from_path('User',users.get_current_user().nickname(),'Stream',stream.name))
                 db.delete(pictures)                  
             ndb.delete_multi(ndb.put_multi(streams))
         self.redirect(original_url) 

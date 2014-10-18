@@ -5,9 +5,12 @@ api_version: 1
 threadsafe: true
 
 handlers:
-#- url: /coverimage.*
- # static_files: mqq.jpg
-  #upload: coverimage
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
+- url: /server
+  static_dir: server
 
 - url: /task
   script: trending.application
@@ -28,7 +31,10 @@ handlers:
 - url: /viewallstream
   script: view.application
   login: required
-  
+
+- url: /api
+  script: search.application
+
 - url: /search
   script: search.application
   login: required
@@ -60,8 +66,24 @@ handlers:
   script: viewsinglestream.application
   login: required
 
-- url: /upload
+- url: /geoview.*
   script: viewsinglestream.application
+  login: required
+
+
+
+
+- url: /geoapi
+  script: viewsinglestream.application
+  login: required
+
+- url: /picapi
+  script: viewsinglestream.application
+  login: required
+
+- url: /upload
+  #script: viewsinglestream.application
+  script: serverside.application
   login: required
 
 - url: /showmore.*

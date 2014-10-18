@@ -16,8 +16,8 @@ class Stream(ndb.Model):
     guesturl=ndb.StringProperty()
     creattime=ndb.DateTimeProperty(auto_now_add=True)
     lastnewdate = ndb.DateTimeProperty(auto_now_add=True)
-    numberofpictures=ndb.IntegerProperty()
-    total=ndb.IntegerProperty()
+    #numberofpictures=ndb.IntegerProperty()
+    #total=ndb.IntegerProperty()
     #views=ndb.IntegerProperty()
     coverurl=ndb.StringProperty()
     author=ndb.UserProperty()
@@ -25,9 +25,8 @@ class Stream(ndb.Model):
     #author=ndb.stringProperty()
 
 class Picture(db.Model):
-    id=db.StringProperty()
-    image=db.BlobProperty()
     uploaddate= db.DateTimeProperty(auto_now_add=True) 
+    imgkey=db.StringProperty()
 
 class Global(ndb.Model):
     name=ndb.StringProperty()

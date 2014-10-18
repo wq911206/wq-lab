@@ -47,9 +47,6 @@ class  CreateStream(webapp2.RequestHandler):
             count.numbers=0
             count.totalviews=0
             count.put()
-            stream.numberofpictures=0
-            #stream.views=0
-            stream.total=0
             stream.author=users.get_current_user()
             stream.author_name=users.get_current_user().nickname()
             stream.url=urllib.urlencode({'streamname': stream.name})
