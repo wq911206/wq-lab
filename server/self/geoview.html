@@ -1,0 +1,145 @@
+
+<!doctype html>
+
+<html lang="en">
+
+   <head>
+		<link type="text/css" rel="stylesheet" href="css/960.css" />
+
+		<link type="text/css" rel="stylesheet" href="css/960_16_col.css" />
+
+		<link type="text/css" rel="stylesheet" href="css/normalize.css" />
+
+		<link type="text/css" rel="stylesheet" href="css/prettify.css" />
+
+		<link type="text/css" rel="stylesheet" href="css/style1.css" />
+
+		<script type="text/javascript" src="js/map/modernizr.min.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
+     <link rel="stylesheet" href="css/screen.css">
+    <!--<link rel="stylesheet" href="css/lightbox.css">
+    <script src="js/lightbox.js"></script>
+    <script src="js/jquery.min.js"></script>-->
+		  <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
+          <script src="js/timeline/jquery-1.10.2.js"></script>
+          <script src="js/timeline/jquery-ui.js"></script>
+          <script>
+          $(function() {
+            $( "#slider-range" ).slider({
+              range: true,
+              min: 0,
+              max: {{length}},
+              values: [ 0, {{length}} ],
+              slide: function( event, ui ) {
+                  $( "#amount" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );	               
+              },
+              stop: function(event,ui){
+                var min=ui.values[0];
+                var max=ui.values[1];
+                var streamdata={"stream_name":$('#streamname').text(),"min":min,"max":max};
+                               
+                $.ajax({
+                    type: "POST",
+                    url: "/geoapi",
+                    data: streamdata,
+                    dataType: "json",
+                    success: function(results){
+                        var tmp=$('#map_canvas');
+                
+                        tmp.gmap('clear','markers'); 
+                        tmp.gmap('get','MarkerClusterer').clearMarkers(); 
+                        tmp.gmap('closeInfoWindow');                             
+                        var map=tmp.gmap('get','map');                
+                        var bounds = map.getBounds();
+                        var southWest = bounds.getSouthWest();
+                        var northEast = bounds.getNorthEast();
+                        var lngSpan = northEast.lng() - southWest.lng();
+                        var latSpan = northEast.lat() - southWest.lat();
+                        
+                        //for ( var i = 0; i < ss; i++ ) {
+                          //  tmp.gmap('addMarker', { 'position': new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random()) }).click(function() {
+                                //tmp.gmap('openInfoWindow', { content : '<img src="img?img_id='+results[i]+'"></img>' }, this);
+                            //    tmp.gmap('openInfoWindow', { content : i.toString()}, this);
+                            //});
+                        //}
+                        $.each(results,function(index,value){
+                            tmp.gmap('addMarker', { 'position': new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random()) }).click(function() {
+                                tmp.gmap('openInfoWindow', { content : '<a class="example-image-link" href="img?img_id='+value+'" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="img?img_id='+value+'" alt="" /></a>' }, this);
+                                //tmp.gmap('openInfoWindow', { content : '<img src="img?img_id='+value+'"></img>' }, this);
+                            });
+                        });
+                        tmp.gmap('set', 'MarkerClusterer', new MarkerClusterer(map, tmp.gmap('get', 'markers')));
+                    }
+                });                
+              }
+            });
+               
+            $( "#amount" ).val(  $( "#slider-range" ).slider( "values", 0 ) +
+              " - " + $( "#slider-range" ).slider( "values", 1 ) );            
+          });
+          </script>
+
+    </head>
+
+    <body>
+      <div class="container">
+        <h3 id="streamname" class="muted">{{stream_name}}</h3>
+        <p>(Click markers to view the pictures)</p>
+        <div id="123"></div>
+		<div class="container_16">
+			<article class="grid_16">
+				<div class="item rounded dark">
+					<div id="map_canvas" class="map"></div>
+				</div>
+			</article>
+		</div>
+
+        <table style="width:60%">
+          <label for="amount">Picture Numbers:</label>
+          <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </table>
+         
+        <div id="slider-range"></div><br>
+        <a href="{{url}}">Go Back</a>
+        
+		<script type="text/javascript" src="js/map/mapapi.js"></script> 
+
+		<script type="text/javascript" src="js/map/underscore.min.js"></script>
+
+		<script type="text/javascript" src="js/map/backbone.min.js"></script>
+
+		<script type="text/javascript" src="js/map/prettify.min.js"></script>
+
+		<script type="text/javascript" src="js/map/demo.js"></script>
+
+		<script type="text/javascript" src="js/map/markerclusterer.min.js"></script>
+
+		<script type="text/javascript" src="js/map/jquery.ui.map.js"></script>
+
+		<script type="text/javascript">
+
+            $(function() { 
+                $('#map_canvas').gmap({'zoom': 2, 'disableDefaultUI':true}).bind('init', function(evt, map) { 
+                    var ss=$( "#slider-range" ).slider( "values", 0 );
+                    var bounds = map.getBounds();
+                    var southWest = bounds.getSouthWest();
+                    var northEast = bounds.getNorthEast();
+                    var lngSpan = northEast.lng() - southWest.lng();
+                    var latSpan = northEast.lat() - southWest.lat();
+                    {%for info1 in info%}
+                        $(this).gmap('addMarker', { 'position': new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random()) } ).click(function() {
+                            $('#map_canvas').gmap('openInfoWindow', { content : '<a class="example-image-link" href="img?img_id={{info1}}" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="img?img_id={{info1}}" alt="" /></a>' }, this);
+
+                        });
+                    {%endfor%}
+                    $(this).gmap('set', 'MarkerClusterer', new MarkerClusterer(map, $(this).gmap('get', 'markers')));
+				});
+            });
+
+        </script>
+
+    
+</div>
+	</body>
+
+</html>

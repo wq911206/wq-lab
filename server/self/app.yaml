@@ -1,0 +1,131 @@
+application: wq911206
+version: 200
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
+- url: /server
+  static_dir: server
+
+- url: /task
+  script: trending.application
+  login: admin
+  
+- url: /clean
+  script: trending.application
+  login: admin
+
+- url: /createstream
+  script: createstream.application
+  login: required
+
+- url: /sign
+  script: createstream.application
+  login: required
+
+- url: /viewallstream
+  script: view.application
+  login: required
+
+- url: /api
+  script: search.application
+
+- url: /search
+  script: search.application
+  login: required
+  
+- url: /showsearch
+  script: search.application
+  login: required
+
+- url: /error
+  script: error.application
+  login: required
+
+- url: /trending
+  script: trending.application
+  login: required
+  
+- url: /update
+  script: trending.application
+  #login: required
+
+- url: /management
+  script: management.application
+
+- url: /delstream
+  script: management.application
+  login: required
+
+- url: /stream.*
+  script: viewsinglestream.application
+  login: required
+
+- url: /geoview.*
+  script: viewsinglestream.application
+  login: required
+
+
+- url: /mobilestream
+  script: viewsinglestream.application
+
+- url: /mobilepic
+  script: viewsinglestream.application
+
+- url: /mobilenearby
+  script: viewsinglestream.application
+
+- url: /geoapi
+  script: viewsinglestream.application
+  login: required
+
+- url: /picapi
+  script: viewsinglestream.application
+  login: required
+
+- url: /upload
+  #script: viewsinglestream.application
+  script: serverside.application
+  login: required
+  
+- url: /mobileupload
+  #script: viewsinglestream.application
+  script: mobileuploadserver.application
+
+
+- url: /showmore.*
+  script: viewsinglestream.application
+  login: required
+
+- url: /delpic
+  script: viewsinglestream.application
+  login: required
+
+- url: /subscribe
+  script: viewsinglestream.application
+
+- url: /img.*
+  script: viewsinglestream.application
+
+
+- url: /social
+  script: social.application
+  login: required
+
+- url: /.*
+  script: login.application
+  
+
+
+libraries:
+- name: webapp2
+  version: latest
+- name: PIL
+  version: latest
+- name: jinja2
+  version: latest
