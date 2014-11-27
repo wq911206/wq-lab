@@ -1,0 +1,42 @@
+Script started on Wed Nov 26 12:41:03 2014
+[?1034hbash-3.2$ ./c[Kmock.sh 
+JUnit version 4.10
+.<html><head><title>Temperature Converter Result</title></head><body><h2>2.12e2 Farenheit = 100 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+.<html><head><title>Temperature Converter Result</title></head><body><h2>211.99191919 Farenheit = 100 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+<html><head><title>Temperature Converter Result</title></head><body><h2>123.456 Farenheit = 50.81 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+.<html><head><title>Temperature Converter Result</title></head><body><h2>300 Farenheit = 148.89 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+<html><head><title>Temperature Converter Result</title></head><body><h2>-456 Farenheit = -271.11 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+<html><head><title>Temperature Converter Result</title></head><body><h2>0 Farenheit = -17.78 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+.<html><head><title>Temperature Converter Result</title></head><body><h2>212 Farenheit = 100 Celsius </h2>
+<p><h3>The temperature in Austin is 451 degrees Farenheit</h3>
+</body></html>
+
+.<html><head><title>Bad Temperature</title></head><body><h2>Need to enter a valid temperature!Got a NumberFormatException on boo!</h2></body></html>
+
+
+Time: 0.023
+
+OK (5 tests)
+
+bash-3.2$ exit
+exit
+
+Script done on Wed Nov 26 12:41:12 2014

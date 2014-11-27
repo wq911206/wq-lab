@@ -1,0 +1,26 @@
+Script started on Thu Nov 27 10:34:47 2014
+[?1034hbash-3.2$ ./c[Keasymock.sh 
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+JUnit version 4.11
+.Hand-written mock, testAdvance.
+.Hand-written mock, testPlay.
+.Hand-written mock, testPlayNoList.
+
+Time: 0.004
+
+OK (3 tests)
+
+JUnit version 4.11
+.Easymock testAdvance.
+.Easymock testPlay.
+.Easymock testPlayNoList.
+
+Time: 0.026
+
+OK (3 tests)
+
+bash-3.2$ exit
+exit
+
+Script done on Thu Nov 27 10:34:57 2014

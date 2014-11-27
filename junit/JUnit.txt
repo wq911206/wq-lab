@@ -1,0 +1,204 @@
+Script started on Wed Nov 26 12:26:03 2014
+[?1034hbash-3.2$ ./comm.sh 
+.F.F.F.F.F.F.E.46341* 46341 = -2147479015
+46340* 46340 = 2147395600
+low high: 0/1 46340/1
+midpoint: 23170/1
+square of midpoint is: 536848900/1
+low high: 0/1 23170/1
+midpoint: 11585/1
+square of midpoint is: 134212225/1
+low high: 0/1 11585/1
+midpoint: 11585/2
+square of midpoint is: 134212225/4
+low high: 0/1 11585/2
+midpoint: 11585/4
+square of midpoint is: 134212225/16
+low high: 0/1 11585/4
+midpoint: 11585/8
+square of midpoint is: 134212225/64
+low high: 0/1 11585/8
+midpoint: 11585/16
+square of midpoint is: 134212225/256
+low high: 0/1 11585/16
+midpoint: 11585/32
+square of midpoint is: 134212225/1024
+low high: 0/1 11585/32
+midpoint: 11585/64
+square of midpoint is: 134212225/4096
+low high: 0/1 11585/64
+midpoint: 11585/128
+square of midpoint is: 134212225/16384
+low high: 0/1 11585/128
+midpoint: 11585/256
+square of midpoint is: 134212225/65536
+low high: 0/1 11585/256
+midpoint: 11585/512
+square of midpoint is: 134212225/262144
+low high: 0/1 11585/512
+midpoint: 11585/1024
+square of midpoint is: 134212225/1048576
+low high: 0/1 11585/1024
+midpoint: 11585/2048
+square of midpoint is: 134212225/4194304
+low high: 0/1 11585/2048
+midpoint: 11585/4096
+square of midpoint is: 134212225/16777216
+low high: 0/1 11585/4096
+midpoint: 11585/8192
+square of midpoint is: 134212225/67108864
+low high: 0/1 11585/8192
+midpoint: 11585/16384
+square of midpoint is: 134212225/268435456
+low high: 0/1 11585/16384
+midpoint: 11585/32768
+square of midpoint is: 134212225/1073741824
+low high: 11585/32768 11585/16384
+midpoint: 34755/65536
+square of midpoint is: 1/0
+low high: 11585/32768 34755/65536
+midpoint: 57925/131072
+square of midpoint is: -1/0
+low high: 57925/131072 34755/65536
+midpoint: 127435/262144
+square of midpoint is: -1/0
+low high: 127435/262144 34755/65536
+midpoint: 266455/524288
+square of midpoint is: -1/0
+low high: 266455/524288 34755/65536
+midpoint: 544495/1048576
+square of midpoint is: 1/0
+low high: 266455/524288 544495/1048576
+midpoint: 1077405/2097152
+square of midpoint is: 1/0
+low high: 266455/524288 1077405/2097152
+midpoint: 2143225/4194304
+square of midpoint is: 1/0
+low high: 266455/524288 2143225/4194304
+midpoint: 4274865/8388608
+square of midpoint is: -1/0
+low high: 4274865/8388608 2143225/4194304
+midpoint: 8561315/16777216
+square of midpoint is: -1/0
+F.F.F.IllegalArgumentToSquareRootException: Illegal argument to square root, should be in range [0,2147483647] got -1/4
+	at Rational.root(Rational.java:111)
+	at RationalTest.testRootMore(RationalTest.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at junit.framework.TestCase.runTest(TestCase.java:176)
+	at junit.framework.TestCase.runBare(TestCase.java:141)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:129)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.textui.TestRunner.doRun(TestRunner.java:116)
+	at junit.textui.TestRunner.start(TestRunner.java:183)
+	at junit.textui.TestRunner.main(TestRunner.java:137)
+	at RationalTest.main(RationalTest.java:121)
+E.F.F.F.F
+Time: 0.006
+There were 2 errors:
+1) testPlus(RationalTest)java.lang.ArithmeticException: / by zero
+	at Rational.plus(Rational.java:62)
+	at RationalTest.testPlus(RationalTest.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+2) testRootMore(RationalTest)java.lang.NullPointerException
+	at RationalTest.testRootMore(RationalTest.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+There were 13 failures:
+1) testDividesMore(RationalTest)junit.framework.AssertionFailedError: expected:<1073741824/1> but was:<-1073741824/1>
+	at RationalTest.testDividesMore(RationalTest.java:107)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+2) testNonEquality(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testNonEquality(RationalTest.java:22)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+3) testAccessors(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testAccessors(RationalTest.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+4) testAbs(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testAbs(RationalTest.java:113)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+5) testMinus(RationalTest)junit.framework.AssertionFailedError: expected:<0/1> but was:<-2147483648/1>
+	at RationalTest.testMinus(RationalTest.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+6) testTimes(RationalTest)junit.framework.AssertionFailedError: expected:<1073741824/1> but was:<-1073741824/1>
+	at RationalTest.testTimes(RationalTest.java:88)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+7) testRoot(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testRoot(RationalTest.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+8) testPlusMore(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testPlusMore(RationalTest.java:68)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+9) testAccessorsMore(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testAccessorsMore(RationalTest.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+10) testTimesMore(RationalTest)junit.framework.AssertionFailedError: expected:<1073741824/1> but was:<-1073741824/1>
+	at RationalTest.testTimesMore(RationalTest.java:94)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+11) testDivides(RationalTest)junit.framework.AssertionFailedError: expected:<1073741824/1> but was:<-1073741824/1>
+	at RationalTest.testDivides(RationalTest.java:101)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+12) testEquality(RationalTest)junit.framework.AssertionFailedError: expected:<1073741824/1> but was:<-1073741824/1>
+	at RationalTest.testEquality(RationalTest.java:17)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+13) testMinusMore(RationalTest)junit.framework.AssertionFailedError
+	at RationalTest.testMinusMore(RationalTest.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at RationalTest.main(RationalTest.java:121)
+
+FAILURES!!!
+Tests run: 15,  Failures: 13,  Errors: 2
+
+bash-3.2$ exit
+exit
+
+Script done on Wed Nov 26 12:26:12 2014

@@ -1,0 +1,31 @@
+Script started on Wed Nov 26 12:59:10 2014
+[?1034hbash-3.2$ ./comm.sh 
+JUnit version 4.11
+.Overall Testing.
+Log in with (Andy,apple).
+Input value 21.2e1.
+21.2e1 Farenheit = 100 Celsius
+Select city: Berkeley
+Temperature in Berkeley = 72 degrees Farenheit
+.Input Testing.
+Put in 211.99199
+211.99199 Farenheit = 100 Celsius
+Put in abc
+Got a NumberFormatException on abc
+Put in 123.456
+123.456 Farenheit = 50.81 Celsius
+Put in 300
+300 Farenheit = 148.89 Celsius
+Put in -456
+-456 Farenheit = -271.11 Celsius
+.Bad Log in Testing: Andy, Apple
+Bad Login
+
+Time: 32.381
+
+OK (3 tests)
+
+bash-3.2$ exit
+exit
+
+Script done on Wed Nov 26 13:00:23 2014
