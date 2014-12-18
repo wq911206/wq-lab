@@ -1,0 +1,75 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.term.Contacts" >
+
+    <item
+        android:id="@+id/action_me"
+        android:orderInCategory="100"
+        android:title="Me"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_notification"
+        android:orderInCategory="100"
+        android:title="Notifications"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_events"
+        android:orderInCategory="100"
+        android:title="Events"
+        app:showAsAction="never">
+        
+        <menu>
+            <item
+                android:id="@+id/event_item1"
+                android:orderInCategory="100"
+                android:title="My Events"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/event_item2"
+                android:orderInCategory="100"
+                android:title="Other Events"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/event_item3"
+                android:orderInCategory="100"
+                android:title="Nearby Events"
+                app:showAsAction="never"/>
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Log Out"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/seldate"
+        android:orderInCategory="100"
+        android:title="Add"
+        app:showAsAction="ifRoom"/> 
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+        android:title="Edit"
+        app:showAsAction="ifRoom"/> 
+    <item
+        android:id="@+id/action_cancel_contact_delete"
+        android:orderInCategory="100"
+        android:title="Cancel"
+        app:showAsAction="ifRoom"/> 
+    <item
+        android:id="@+id/action_delete_contact"
+        android:orderInCategory="100"
+        android:title="Delete"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="Refresh"
+        app:showAsAction="ifRoom"
+        />
+</menu>

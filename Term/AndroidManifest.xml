@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.term"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCntqYAR_o9BQH1d8D_oITrlBFI5RT6yb0" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Contacts"
+            android:label="@string/title_activity_contacts"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MyCards"
+            android:label="@string/title_activity_my_cards" >
+        </activity>
+        <activity
+            android:name=".CreateNewCard"
+            android:label="@string/title_activity_create_new_card"
+            android:parentActivityName=".MyCards" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.MyCards" />
+        </activity>
+        <activity
+            android:name=".SingleCard"
+            android:label="@string/title_activity_single_card"
+            android:parentActivityName=".MyCards" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.MyCards" />
+        </activity>
+        <activity
+            android:name="com.dm.zbar.android.scanner.ZBarScannerActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".SingleContact"
+            android:label="@string/title_activity_single_contact"
+            android:parentActivityName=".Contacts" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.Contacts" />
+        </activity>
+        <activity
+            android:name=".MyEvents"
+            android:label="@string/title_activity_my_events" >
+        </activity>
+        <activity
+            android:name=".CreateNewEvent"
+            android:label="@string/title_activity_create_new_event"
+            android:parentActivityName=".MyEvents" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.MyEvents" />
+        </activity>
+        <activity
+            android:name=".SingleOwnEvent"
+            android:label="@string/title_activity_single_own_event"
+            android:parentActivityName=".MyEvents" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.MyEvents" />
+        </activity>
+        <activity
+            android:name=".SubscribedEvents"
+            android:label="@string/title_activity_subscribed_events" >
+        </activity>
+        <activity
+            android:name=".SingleOtherEvent"
+            android:label="@string/title_activity_single_other_event"
+            android:parentActivityName=".SubscribedEvents" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.term.SubscribedEvents" />
+        </activity>
+        <activity
+            android:name=".NearbyEvents"
+            android:label="@string/title_activity_nearby_events" >
+        </activity>
+        <activity
+            android:name=".Notifications"
+            android:label="@string/title_activity_notifications" >
+        </activity>
+    </application>
+
+</manifest>
