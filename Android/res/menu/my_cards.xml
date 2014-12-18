@@ -1,0 +1,51 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.term.MyCards" >
+
+    <item
+        android:id="@+id/action_contacts"
+        android:orderInCategory="100"
+        android:title="Contacts"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_notification"
+        android:orderInCategory="100"
+        android:title="Notifications"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_events"
+        android:orderInCategory="100"
+        android:title="Events"
+        app:showAsAction="never">
+        
+        <menu>
+            <item
+                android:id="@+id/event_item1"
+                android:orderInCategory="100"
+                android:title="My Events"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/event_item2"
+                android:orderInCategory="100"
+                android:title="Other Events"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/event_item3"
+                android:orderInCategory="100"
+                android:title="Nearby Events"
+                app:showAsAction="never"/>
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Log Out"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_createnewcard"
+        android:orderInCategory="100"
+        android:title="New"
+        app:showAsAction="ifRoom"/>
+</menu>
